@@ -49,7 +49,7 @@ const router = createBrowserRouter(
           }
         />
         <Route
-          path="article/:id"
+          path="/Hacker-News/article/:id"
           element={
             <ErrorBoundary FallbackComponent={ErrorPage}>
               <Suspense fallback={<Loader />}>
