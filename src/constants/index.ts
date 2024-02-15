@@ -27,8 +27,8 @@ export const constants: Constants = {
   UPDATE_COMMENTS: "Update comments",
 
   NEWS_COUNT_START_INDEX: 0,
-  NEWS_COUNT_END_INDEX: 500,
-  MAX_STORIES: 500,
+  NEWS_COUNT_END_INDEX: 100,
+  MAX_STORIES: 100,
   STORIES_INCREMENT: 30,
 
   PREPOSITION_BY: "by",
