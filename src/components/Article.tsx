@@ -9,7 +9,7 @@ import { Story } from "./Story";
 export const Article: FC<StoryProps> = ({ ...article }) => {
   const navigate = useNavigate();
 
-  const getBack = (): void => navigate("/");
+  const getBack = (): void => navigate("/Hacker-News");
 
   return (
     <>

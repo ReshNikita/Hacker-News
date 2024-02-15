@@ -8,7 +8,7 @@ import { constants } from "../../constants";
 export const NotFound: FC = () => {
   const navigate = useNavigate();
 
-  const getBack = (): void => navigate("/");
+  const getBack = (): void => navigate("/Hacker-News");
 
   return (
     <main className="mt-28 z-50 text-center">

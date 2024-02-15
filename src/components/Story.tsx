@@ -17,7 +17,7 @@ export const Story: FC<TStory> = story => {
   return (
     <li
       className="flex flex-col justify-evenly my-3 mx-3 pl-2  h-auto w-1/2 bg-header-gray opacity-90 hover:opacity-100 hover:shadow-4xl shadow-shadow-color"
-      onClick={() => navigate(`/article/${story.id}`)}
+      onClick={() => navigate(`/Hacker-News/article/${story.id}`)}
     >
       <StoryContent {...story} />
     </li>
