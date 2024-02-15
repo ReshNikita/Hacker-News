@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 
 import { CommentsList } from "./CommentsList";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
@@ -14,11 +14,11 @@ type TComment = {
 };
 
 export const Comment: FC<TComment> = ({ comment }) => {
-  const [areSubCommentsVisible, setAreSubCommentsVisible] =
-    useState<boolean>(false);
+  // const [areSubCommentsVisible, setAreSubCommentsVisible] =
+  //   useState<boolean>(false);
 
-  const showSubComments = (): void =>
-    setAreSubCommentsVisible(!areSubCommentsVisible);
+  // const showSubComments = (): void =>
+  //   setAreSubCommentsVisible(!areSubCommentsVisible);
 
   const { text, by, time, id, kids, dead, deleted } = comment;
 
