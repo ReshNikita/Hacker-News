@@ -19,7 +19,7 @@ type Constants = {
   GET_BACK: string;
   MAX_STORIES: number;
   STORIES_INCREMENT: number;
-  image: string;
+  IMAGE: string;
 };
 
 export const constants: Constants = {
@@ -44,5 +44,5 @@ export const constants: Constants = {
   404: "404",
   OOPS: "Oops! Looks like you're lost.",
   GET_BACK: "Let's get you back",
-  image: image,
+  IMAGE: image,
 } as const;

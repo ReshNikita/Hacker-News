@@ -15,8 +15,6 @@ export const StoriesContainer: FC = () => {
     [stories]
   );
 
-  // const sortedStories = [...stories].sort(getSortByDate);
-
   useEffect(() => {
     dispatch(fetchNews());
   }, []);
