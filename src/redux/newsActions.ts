@@ -33,6 +33,7 @@ export const fetchNews =
         constants.NEWS_COUNT_START_INDEX,
         constants.NEWS_COUNT_END_INDEX
       );
+
       const data = await Promise.all(
         newsIdsSlice.map((id: number) => getStory(id))
       );

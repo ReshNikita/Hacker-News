@@ -9,12 +9,13 @@ import {
 
 import { Layout } from "./components/layout/Layout";
 import { Loader } from "./components/Loader";
+import { MainPage } from "./components/pages/MainPage";
 
-const MainPage = lazy(() =>
-  import("./components/pages/MainPage").then(module => {
-    return { default: module.MainPage };
-  })
-);
+// const MainPage = lazy(() =>
+//   import("./components/pages/MainPage").then(module => {
+//     return { default: module.MainPage };
+//   })
+// );
 
 const ErrorPage = lazy(() =>
   import("./components/pages/ErrorPage").then(module => {
@@ -40,13 +41,14 @@ const router = createBrowserRouter(
       <Route path="/Hacker-News" element={<Layout />}>
         <Route
           index
-          element={
-            <ErrorBoundary FallbackComponent={ErrorPage}>
-              <Suspense fallback={<Loader />}>
-                <MainPage />
-              </Suspense>
-            </ErrorBoundary>
-          }
+          // element={
+          //   <ErrorBoundary FallbackComponent={ErrorPage}>
+          //     <Suspense fallback={<Loader />}>
+          //       <MainPage />
+          //     </Suspense>
+          //   </ErrorBoundary>
+          // }
+          element={<MainPage />}
         />
         <Route
           path="/Hacker-News/article/:id"

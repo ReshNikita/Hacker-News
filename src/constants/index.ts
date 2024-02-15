@@ -29,7 +29,7 @@ export const constants: Constants = {
   NEWS_COUNT_START_INDEX: 0,
   NEWS_COUNT_END_INDEX: 100,
   MAX_STORIES: 100,
-  STORIES_INCREMENT: 30,
+  STORIES_INCREMENT: 10,
 
   PREPOSITION_BY: "by",
   LOADING: "Loading...",

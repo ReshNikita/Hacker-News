@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useMemo } from "react";
 import { Story } from "../Story";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { getSortByDate } from "../../utils/getSortByDate";
@@ -10,7 +10,12 @@ export const StoriesContainer: FC = () => {
   const { count } = useInfiniteScroll();
   const dispatch = useAppDispatch();
   const { stories, areStoriesLoading } = useAppSelector(state => state.news);
-  const sortedStories = [...stories].sort(getSortByDate);
+  const sortedStories = useMemo(
+    () => [...stories].sort(getSortByDate),
+    [stories]
+  );
+
+  // const sortedStories = [...stories].sort(getSortByDate);
 
   useEffect(() => {
     dispatch(fetchNews());
