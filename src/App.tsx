@@ -37,7 +37,7 @@ const ArticlePage = lazy(() =>
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route path="/" element={<Layout />}>
+      <Route path="/Hacker-News" element={<Layout />}>
         <Route
           index
           element={
