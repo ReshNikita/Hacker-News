@@ -20,6 +20,9 @@ type Constants = {
   MAX_STORIES: number;
   STORIES_INCREMENT: number;
   IMAGE: string;
+  ERROR: string;
+  DEAD_COMMENT: string;
+  DELELTED_COMMENT: string;
 };
 
 export const constants: Constants = {
@@ -45,4 +48,7 @@ export const constants: Constants = {
   OOPS: "Oops! Looks like you're lost.",
   GET_BACK: "Let's get you back",
   IMAGE: image,
+  ERROR: "Something went wrong",
+  DEAD_COMMENT: "Comment is dead",
+  DELELTED_COMMENT: "Comment is deleted",
 } as const;

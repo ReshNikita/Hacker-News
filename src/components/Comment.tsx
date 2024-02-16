@@ -36,11 +36,11 @@ export const Comment: FC<TComment> = ({ comment }) => {
   const filtredSubComments = subComments.filter(item => item.parent === id);
 
   const deadComments: Nullable<React.JSX.Element> = dead ? (
-    <p>Comment is dead</p>
+    <p>{constants.DEAD_COMMENT}</p>
   ) : null;
 
   const deletedComments: Nullable<React.JSX.Element> = deleted ? (
-    <p>Comment is deleted</p>
+    <p>{constants.DELELTED_COMMENT}</p>
   ) : null;
 
   return (
