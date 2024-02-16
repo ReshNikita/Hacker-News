@@ -3,7 +3,7 @@ import { FC, memo } from "react";
 import { constants } from "../constants";
 
 const Header: FC = () => (
-  <header className="flex items-center gap-500 fixed  z-50  w-full pt-1 pb-6 border-b-4 border-orange-600 bg-header-gray  text-white">
+  <header className="flex items-center gap-500 max-md:gap-200 max-sm:gap-10 fixed  z-50  w-full pt-1 pb-6 border-b-4 border-orange-600 bg-header-gray  text-white">
     <img
       src={constants.IMAGE}
       alt="logo"
