@@ -3,8 +3,8 @@ import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { constants } from "../constants";
 import { StoryProps } from "../types/types";
-import { MemoizedButton } from "./Button";
 import { Story } from "./Story";
+import { Button } from "./Button";
 
 export const Article: FC<StoryProps> = ({ ...article }) => {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ export const Article: FC<StoryProps> = ({ ...article }) => {
   return (
     <>
       <div className="flex justify-center mt-28">
-        <MemoizedButton
+        <Button
           onClick={getBack}
           text={constants.BACK_BUTTON}
           className="flex items-center p-4 h-6 border-2 border-solid rounded-2xl text-center leading-8 transition ease-in-out delay-100  bg-orange-700 hover:bg-orange-400"

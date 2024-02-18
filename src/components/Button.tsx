@@ -7,15 +7,15 @@ type ButtonProps = {
   className: string;
 };
 
-const Button: FC<ButtonProps> = ({ text, disabled, onClick, className }) => (
-  <button
-    type="button"
-    onClick={onClick}
-    className={className}
-    disabled={disabled}
-  >
-    {text}
-  </button>
+export const Button: FC<ButtonProps> = memo(
+  ({ text, disabled, onClick, className }) => (
+    <button
+      type="button"
+      onClick={onClick}
+      className={className}
+      disabled={disabled}
+    >
+      {text}
+    </button>
+  )
 );
-
-export const MemoizedButton = memo(Button);

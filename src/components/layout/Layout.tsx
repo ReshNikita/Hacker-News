@@ -1,13 +1,13 @@
 import { FC } from "react";
 import { Outlet } from "react-router-dom";
 
-import { MemoizedHeader } from "../Header";
-import { MemoizedCopyright } from "../Copyright";
+import { Header } from "../Header";
+import { Copyright } from "../Copyright";
 
 export const Layout: FC = () => (
   <>
-    <MemoizedHeader />
+    <Header />
     <Outlet />
-    <MemoizedCopyright />
+    <Copyright />
   </>
 );

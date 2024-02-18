@@ -7,9 +7,9 @@ import { fetchComments, fetchStory } from "../../redux/newsActions";
 import { constants } from "../../constants";
 import { Loader } from "../Loader";
 import { Article } from "../Article";
-import { MemoizedButton } from "../Button";
 import { CommentsList } from "../CommentsList";
 import { ErrorNotification } from "../ErrorNotification";
+import { Button } from "../Button";
 
 export const ArticlePage: FC = () => {
   const { id } = useParams();
@@ -55,7 +55,7 @@ export const ArticlePage: FC = () => {
       {article !== null && article.kids && (
         <>
           <div className="flex flex-col justify-center items-center">
-            <MemoizedButton
+            <Button
               onClick={loadComments}
               text={constants.UPDATE_COMMENTS}
               className="flex items-center p-4 h-6 m-3 border-2 border-solid rounded-2xl text-center leading-8 transition ease-in-out delay-100  bg-orange-700 hover:bg-orange-400"

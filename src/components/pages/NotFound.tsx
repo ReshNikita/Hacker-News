@@ -1,9 +1,8 @@
 import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { MemoizedButton } from "../Button";
-
 import { constants } from "../../constants";
+import { Button } from "../Button";
 
 export const NotFound: FC = () => {
   const navigate = useNavigate();
@@ -34,7 +33,7 @@ export const NotFound: FC = () => {
         </div>
         <p className="mt-4 text-gray-500">{constants.GET_BACK}</p>
         <div className="flex justify-center mt-6">
-          <MemoizedButton
+          <Button
             text={constants.BACK_BUTTON}
             className="flex items-center p-4 h-6 border-2 border-solid rounded-2xl text-center leading-8 transition ease-in-out delay-100  bg-orange-700 hover:bg-orange-400"
             onClick={getBack}
