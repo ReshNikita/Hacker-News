@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { FC, useEffect, useState } from "react";
 
 import { CommentsList } from "./CommentsList";
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
@@ -8,17 +8,18 @@ import { constants } from "../constants";
 import { Nullable, StoryProps } from "../types/types";
 import { getDate } from "../utils/getDate";
 import { cleanHtml } from "../utils/cleanHtml";
+import { Button } from "./Button";
 
 type TComment = {
   comment: StoryProps;
 };
 
 export const Comment: FC<TComment> = ({ comment }) => {
-  // const [areSubCommentsVisible, setAreSubCommentsVisible] =
-  //   useState<boolean>(false);
+  const [areSubCommentsVisible, setAreSubCommentsVisible] =
+    useState<boolean>(false);
 
-  // const showSubComments = (): void =>
-  //   setAreSubCommentsVisible(!areSubCommentsVisible);
+  const showSubComments = (): void =>
+    setAreSubCommentsVisible(!areSubCommentsVisible);
 
   const { text, by, time, id, kids, dead, deleted } = comment;
 
@@ -43,6 +44,10 @@ export const Comment: FC<TComment> = ({ comment }) => {
     <p>{constants.DELELTED_COMMENT}</p>
   ) : null;
 
+  const showSubCommentsstyle: string = areSubCommentsVisible
+    ? "flex pl-6"
+    : "hidden";
+
   return (
     <div className="flex flex-col justify-center items-center bg-header-gray">
       <section className="flex flex-col flex-wrap p-2">
@@ -58,12 +63,18 @@ export const Comment: FC<TComment> = ({ comment }) => {
         {deadComments}
         {deletedComments}
 
-        {/* {kids && (
-          <button className="" onClick={showSubComments}>
-            Show More... {areSubCommentsVisible ? "[-]" : "[+]"}
-          </button>
-        )} */}
-        {kids && <CommentsList comments={filtredSubComments} />}
+        {kids && (
+          <Button
+            text={`Show  ${areSubCommentsVisible ? "less [-]" : "more [+]"} `}
+            onClick={showSubComments}
+            className="pt-2"
+          />
+        )}
+        {kids && (
+          <div className={showSubCommentsstyle}>
+            <CommentsList comments={filtredSubComments} />
+          </div>
+        )}
       </section>
     </div>
   );
