@@ -67,7 +67,7 @@ export const Comment: FC<TComment> = ({ comment }) => {
           <Button
             text={`Show  ${areSubCommentsVisible ? "less [-]" : "more [+]"} `}
             onClick={showSubComments}
-            className="pt-2"
+            className="pt-2 underline hover:text-orange-700"
           />
         )}
         {kids && (

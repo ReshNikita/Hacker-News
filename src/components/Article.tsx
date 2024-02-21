@@ -26,7 +26,7 @@ export const Article: FC<StoryProps> = ({ ...article }) => {
       <a
         href={article?.url}
         target="_blank"
-        className="opacity-100 underline underline-offset-4 active:text-orange-300 hover:decoration-orange-700 hover:text-orange-700 "
+        className="opacity-100 underline underline-offset-4 active:text-orange-300 hover:decoration-orange-700 hover:text-orange-700 cursor-pointer"
       >
         {constants.READ_SOURCE}
       </a>

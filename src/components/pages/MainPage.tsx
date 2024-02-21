@@ -12,6 +12,7 @@ import { Button } from "../Button";
 export const MainPage: FC = () => {
   const dispatch = useAppDispatch();
   const { notification } = useAppSelector(state => state.error);
+  const { areStoriesLoading } = useAppSelector(state => state.news);
 
   useEffect(() => {
     dispatch(resetArticle());
@@ -25,7 +26,12 @@ export const MainPage: FC = () => {
         <Button
           onClick={updateNews}
           text={constants.UPDATE_BUTTON}
-          className="flex items-center p-4 h-6 border-2 border-solid rounded-2xl text-center leading-8 transition ease-in-out delay-100  bg-orange-700 hover:bg-orange-400"
+          className={`flex items-center p-4 h-6 border-2 border-solid rounded-2xl text-center leading-8 bg-orange-700 ${
+            areStoriesLoading
+              ? "disabled:opacity-75 cursor-not-allowed"
+              : "transition ease-in-out delay-100 hover:bg-orange-400"
+          }`}
+          disabled={areStoriesLoading}
         />
       </div>
       {notification ? (

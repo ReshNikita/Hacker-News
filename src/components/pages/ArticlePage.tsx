@@ -58,7 +58,12 @@ export const ArticlePage: FC = () => {
             <Button
               onClick={loadComments}
               text={constants.UPDATE_COMMENTS}
-              className="flex items-center p-4 h-6 m-3 border-2 border-solid rounded-2xl text-center leading-8 transition ease-in-out delay-100  bg-orange-700 hover:bg-orange-400"
+              className={`flex items-center p-4 h-6 m-3 border-2 border-solid rounded-2xl text-center leading-8 bg-orange-700 ${
+                areCommentsLoading
+                  ? "disabled:opacity-75 cursor-not-allowed"
+                  : "transition ease-in-out delay-100 hover:bg-orange-400"
+              }`}
+              disabled={areCommentsLoading}
             />
           </div>
 
