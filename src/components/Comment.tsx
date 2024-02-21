@@ -37,16 +37,12 @@ export const Comment: FC<TComment> = ({ comment }) => {
   const filtredSubComments = subComments.filter(item => item.parent === id);
 
   const deadComments: Nullable<React.JSX.Element> = dead ? (
-    <p>{constants.DEAD_COMMENT}</p>
+    <p className="italic text-neutral-600">{constants.DEAD_COMMENT}</p>
   ) : null;
 
   const deletedComments: Nullable<React.JSX.Element> = deleted ? (
-    <p>{constants.DELELTED_COMMENT}</p>
+    <p className="italic">{constants.DELELTED_COMMENT}</p>
   ) : null;
-
-  const showSubCommentsstyle: string = areSubCommentsVisible
-    ? "flex pl-6"
-    : "hidden";
 
   return (
     <div className="flex flex-col justify-center items-center bg-header-gray">
@@ -54,7 +50,11 @@ export const Comment: FC<TComment> = ({ comment }) => {
         <span className="text-sm text-gray-500">
           {constants.PREPOSITION_BY} <span className="italic">{by}</span>
         </span>
-        {text && <p dangerouslySetInnerHTML={{ __html: html }} />}
+        {text === "[dead]" ? (
+          <p className="italic text-neutral-600">{text}</p>
+        ) : (
+          <p dangerouslySetInnerHTML={{ __html: html }} />
+        )}
 
         <p className="italic">
           {constants.POSTED_ON}
@@ -71,7 +71,7 @@ export const Comment: FC<TComment> = ({ comment }) => {
           />
         )}
         {kids && (
-          <div className={showSubCommentsstyle}>
+          <div className={areSubCommentsVisible ? "flex pl-6" : "hidden"}>
             <CommentsList comments={filtredSubComments} />
           </div>
         )}
