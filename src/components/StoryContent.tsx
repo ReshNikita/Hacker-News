@@ -9,19 +9,17 @@ export const StoryContent: FC<StoryProps> = ({
   time,
   score,
   descendants,
-}) => {
-  return (
-    <>
-      {title && <h2>{title}</h2>}
+}) => (
+  <>
+    {title && <h2>{title}</h2>}
 
-      <span className="text-sm text-gray-500">
-        {constants.PREPOSITION_BY} <span className="italic">{by}</span>
-      </span>
+    <span className="text-sm text-gray-500">
+      {constants.PREPOSITION_BY} <span className="italic">{by}</span>
+    </span>
 
-      <span>
-        {constants.RATING} {score} &#124; {constants.COMMENTS} {descendants}
-      </span>
-      <time className="text-gray-300">{getDate(time)}</time>
-    </>
-  );
-};
+    <span>
+      {constants.RATING} {score} &#124; {constants.COMMENTS} {descendants}
+    </span>
+    <time className="text-gray-300">{getDate(time)}</time>
+  </>
+);
