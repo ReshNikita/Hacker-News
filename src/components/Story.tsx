@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, memo } from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -11,7 +11,7 @@ type TStory = {
   kids: number[];
 };
 
-export const Story: FC<TStory> = story => {
+export const Story: FC<TStory> = memo(story => {
   const navigate = useNavigate();
 
   return (
@@ -22,4 +22,4 @@ export const Story: FC<TStory> = story => {
       <StoryContent {...story} />
     </li>
   );
-};
+});
