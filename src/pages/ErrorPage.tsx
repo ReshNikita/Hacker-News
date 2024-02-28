@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { constants } from "../../constants";
+import { constants } from "../constants";
 
 type Error = {
   error: {

@@ -9,7 +9,7 @@ type TCommentsList = {
 
 export const CommentsList: FC<TCommentsList> = ({ comments }) => (
   <ul className="flex flex-col items-center">
-    {comments.map(comment => (
+    {comments?.map(comment => (
       <li className="m-3" key={comment.id}>
         <Comment comment={comment} />
       </li>

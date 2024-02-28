@@ -1,14 +1,16 @@
 import { FC, useEffect, useState } from "react";
 
 import { CommentsList } from "./CommentsList";
+import { Button } from "./Button";
+
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { fetchSubComments } from "../redux/newsActions";
 
-import { constants } from "../constants";
-import { Nullable, StoryProps } from "../types/types";
 import { getDate } from "../utils/getDate";
 import { cleanHtml } from "../utils/cleanHtml";
-import { Button } from "./Button";
+import { filterSubComments } from "../utils/filterSubComments";
+import { Falsy, StoryProps } from "../types/types";
+import { constants } from "../constants";
 
 type TComment = {
   comment: StoryProps;
@@ -34,15 +36,16 @@ export const Comment: FC<TComment> = ({ comment }) => {
     }
   }, [dispatch, kids]);
 
-  const filtredSubComments = subComments.filter(item => item.parent === id);
+  // const filtredSubComments = subComments.filter(item => item.parent === id);
+  const filtredSubComments = filterSubComments(subComments, id);
 
-  const deadComments: Nullable<React.JSX.Element> = dead ? (
+  const deadComments: Falsy<JSX.Element> = dead && (
     <p className="italic text-neutral-600">{constants.DEAD_COMMENT}</p>
-  ) : null;
+  );
 
-  const deletedComments: Nullable<React.JSX.Element> = deleted ? (
-    <p className="italic">{constants.DELELTED_COMMENT}</p>
-  ) : null;
+  const deletedComments: Falsy<JSX.Element> = deleted && (
+    <p className="italic text-neutral-600">{constants.DELELTED_COMMENT}</p>
+  );
 
   return (
     <div className="flex flex-col justify-center items-center bg-header-gray">

@@ -1,13 +1,12 @@
 import { FC } from "react";
-import { useNavigate } from "react-router-dom";
 
-import { constants } from "../../constants";
-import { Button } from "../Button";
+import { Button } from "../components/Button";
+
+import { constants } from "../constants";
+import { useNavigateHook } from "../hooks/useNavigateHook";
 
 export const NotFound: FC = () => {
-  const navigate = useNavigate();
-
-  const getBack = (): void => navigate("/Hacker-News");
+  const { getNavigation } = useNavigateHook();
 
   return (
     <main className="mt-28 z-50 text-center">
@@ -36,7 +35,7 @@ export const NotFound: FC = () => {
           <Button
             text={constants.BACK_BUTTON}
             className="flex items-center p-4 h-6 border-2 border-solid rounded-2xl text-center leading-8 transition ease-in-out delay-100  bg-orange-700 hover:bg-orange-400"
-            onClick={getBack}
+            onClick={() => getNavigation(constants.BASE_URL)}
           />
         </div>
       </div>

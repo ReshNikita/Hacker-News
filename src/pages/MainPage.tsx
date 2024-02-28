@@ -1,13 +1,14 @@
 import { FC, useEffect } from "react";
 
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { resetArticle } from "../../redux/newsSlice";
-import { fetchNews } from "../../redux/newsActions";
+import { ErrorNotification } from "../components/ErrorNotification";
+import { StoriesContainer } from "../components/StoriesContainer";
+import { Button } from "../components/Button";
 
-import { ErrorNotification } from "../ErrorNotification";
-import { StoriesContainer } from "../containers/StoriesContainer";
-import { constants } from "../../constants";
-import { Button } from "../Button";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { resetArticle } from "../redux/newsSlice";
+import { fetchNews } from "../redux/newsActions";
+
+import { constants } from "../constants";
 
 export const MainPage: FC = () => {
   const dispatch = useAppDispatch();

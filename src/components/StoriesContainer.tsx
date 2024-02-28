@@ -1,10 +1,13 @@
 import { FC, useEffect, useMemo } from "react";
-import { Story } from "../Story";
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { getSortByDate } from "../../utils/getSortByDate";
-import { Loader } from "../Loader";
-import { fetchNews } from "../../redux/newsActions";
-import { useInfiniteScroll } from "../../hooks/useInfiniteScroll";
+
+import { Story } from "./Story";
+import { Loader } from "./Loader";
+
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { fetchNews } from "../redux/newsActions";
+
+import { getSortByDate } from "../utils/getSortByDate";
+import { useInfiniteScroll } from "../hooks/useInfiniteScroll";
 
 export const StoriesContainer: FC = () => {
   const { count } = useInfiniteScroll();

@@ -1,6 +1,6 @@
+import { constants } from "./../constants";
 import { AppDispatch, RootState } from "./store";
 import { getStory, getStoriesIds } from "../api";
-import { constants } from "../constants";
 
 import {
   loadArticle,
@@ -14,6 +14,7 @@ import {
 
 import { getSlicedNews } from "../utils/getSlicedNews";
 import { resetNotification, showError } from "./errorSlice";
+import { StoryProps } from "../types/types";
 
 export const fetchNews =
   () =>
@@ -27,23 +28,23 @@ export const fetchNews =
         dispatch(resetNotification());
       }
 
-      const newsIds = await getStoriesIds();
+      const newsIds = (await getStoriesIds()) as number[];
       const newsIdsSlice = getSlicedNews(
         newsIds,
         constants.NEWS_COUNT_START_INDEX,
         constants.NEWS_COUNT_END_INDEX
       );
 
-      const data = await Promise.all(
+      const data = (await Promise.all(
         newsIdsSlice.map((id: number) => getStory(id))
-      );
+      )) as StoryProps[];
 
       dispatch(loadStories(data));
     } catch (error) {
       dispatch(
         showError({
-          title: "Error!",
-          message: "Fetching news failed! Please try again later.",
+          title: constants.ERROR_TITLE,
+          message: constants.FETCHING_NEWS_FAIL,
         })
       );
     }
@@ -61,13 +62,13 @@ export const fetchStory =
         dispatch(resetNotification());
       }
 
-      const data = await getStory(id);
+      const data = (await getStory(id)) as StoryProps;
       dispatch(loadArticle(data));
     } catch (error) {
       dispatch(
         showError({
-          title: "Error!",
-          message: "Fetching story failed! Please try again later.",
+          title: constants.ERROR_TITLE,
+          message: constants.FETCHING_STORY_FAIL,
         })
       );
     }
@@ -86,13 +87,15 @@ export const fetchComments =
       }
 
       const kidsIds = getState().news.article?.kids as number[];
-      const data = await Promise.all(kidsIds.map((id: number) => getStory(id)));
+      const data = (await Promise.all(
+        kidsIds.map((id: number) => getStory(id))
+      )) as StoryProps[];
       dispatch(loadComments(data));
     } catch (error) {
       dispatch(
         showError({
-          title: "Error!",
-          message: "Loading comments failed! Please, try again later.",
+          title: constants.ERROR_TITLE,
+          message: constants.LOADING_COMMENTS_FAIL,
         })
       );
     }
@@ -108,13 +111,15 @@ export const fetchSubComments =
         dispatch(resetNotification());
       }
 
-      const data = await Promise.all(kidsIds.map(id => getStory(id)));
+      const data = (await Promise.all(
+        kidsIds.map(id => getStory(id))
+      )) as StoryProps[];
       data.forEach(item => dispatch(loadSubComments(item)));
     } catch (error) {
       dispatch(
         showError({
-          title: "Error!",
-          message: "Loading comments failed! Please, try again later.",
+          title: constants.ERROR_TITLE,
+          message: constants.LOADING_COMMENTS_FAIL,
         })
       );
     }

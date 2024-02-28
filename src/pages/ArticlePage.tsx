@@ -1,15 +1,18 @@
 import { FC, useCallback, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { loadArticle } from "../../redux/newsSlice";
-import { fetchComments, fetchStory } from "../../redux/newsActions";
-import { constants } from "../../constants";
-import { Loader } from "../Loader";
-import { Article } from "../Article";
-import { CommentsList } from "../CommentsList";
-import { ErrorNotification } from "../ErrorNotification";
-import { Button } from "../Button";
+import { Loader } from "../components/Loader";
+import { Article } from "../components/Article";
+import { CommentsList } from "../components/CommentsList";
+import { ErrorNotification } from "../components/ErrorNotification";
+import { Button } from "../components/Button";
+
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { loadArticle } from "../redux/newsSlice";
+import { fetchComments, fetchStory } from "../redux/newsActions";
+
+import { constants } from "../constants";
+import { findStory } from "../utils/findStory";
 
 export const ArticlePage: FC = () => {
   const { id } = useParams();
@@ -18,7 +21,9 @@ export const ArticlePage: FC = () => {
     useAppSelector(state => state.news);
 
   const { notification } = useAppSelector(state => state.error);
-  const getStory = stories.find(story => story.id === Number(id));
+
+  // const getStory = stories.find(story => story.id === Number(id));
+  const getStory = findStory(stories, id);
 
   const loadComments = useCallback(() => {
     if (article !== null && article.kids) {

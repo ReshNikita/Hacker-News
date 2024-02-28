@@ -1,21 +1,20 @@
 import { FC } from "react";
 
-import { useNavigate } from "react-router-dom";
-import { constants } from "../constants";
-import { StoryProps } from "../types/types";
 import { Story } from "./Story";
 import { Button } from "./Button";
 
-export const Article: FC<StoryProps> = ({ ...article }) => {
-  const navigate = useNavigate();
+import { StoryProps } from "../types/types";
+import { constants } from "../constants";
+import { useNavigateHook } from "../hooks/useNavigateHook";
 
-  const getBack = (): void => navigate("/Hacker-News");
+export const Article: FC<StoryProps> = ({ ...article }) => {
+  const { getNavigation } = useNavigateHook();
 
   return (
     <>
       <div className="flex justify-center mt-28">
         <Button
-          onClick={getBack}
+          onClick={() => getNavigation(constants.BASE_URL)}
           text={constants.BACK_BUTTON}
           className="flex items-center p-4 h-6 border-2 border-solid rounded-2xl text-center leading-8 transition ease-in-out delay-100  bg-orange-700 hover:bg-orange-400"
         />
