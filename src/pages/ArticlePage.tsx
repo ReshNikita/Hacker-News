@@ -22,7 +22,6 @@ export const ArticlePage: FC = () => {
 
   const { notification } = useAppSelector(state => state.error);
 
-  // const getStory = stories.find(story => story.id === Number(id));
   const getStory = findStory(stories, id);
 
   const loadComments = useCallback(() => {

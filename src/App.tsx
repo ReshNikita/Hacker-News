@@ -1,5 +1,4 @@
-import { FC, lazy, Suspense } from "react";
-import { ErrorBoundary } from "react-error-boundary";
+import { FC, lazy } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -8,16 +7,10 @@ import {
 } from "react-router-dom";
 
 import { Layout } from "./layout/Layout";
-import { Loader } from "./components/Loader";
 import { MainPage } from "./pages/MainPage";
+import { withWrapper } from "./hoc/withWrapper";
 
 import { constants } from "./constants";
-
-const ErrorPage = lazy(() =>
-  import("./pages/ErrorPage").then(module => {
-    return { default: module.ErrorPage };
-  })
-);
 
 const NotFound = lazy(() =>
   import("./pages/NotFound").then(module => {
@@ -38,24 +31,9 @@ const router = createBrowserRouter(
         <Route index element={<MainPage />} />
         <Route
           path={`${constants.BASE_URL}/article/:id`}
-          element={
-            <ErrorBoundary FallbackComponent={ErrorPage}>
-              <Suspense fallback={<Loader />}>
-                <ArticlePage />
-              </Suspense>
-            </ErrorBoundary>
-          }
+          element={withWrapper(<ArticlePage />)}
         />
-        <Route
-          path="*"
-          element={
-            <ErrorBoundary FallbackComponent={ErrorPage}>
-              <Suspense fallback={<Loader />}>
-                <NotFound />
-              </Suspense>
-            </ErrorBoundary>
-          }
-        />
+        <Route path="*" element={withWrapper(<NotFound />)} />
       </Route>
     </Route>
   )
